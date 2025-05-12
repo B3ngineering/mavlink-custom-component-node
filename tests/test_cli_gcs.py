@@ -29,6 +29,12 @@ class TestGroundStation(unittest.TestCase):
         self.gcs.connection.target_system = 1
         self.gcs.connection.target_component = 25
 
+    def tearDown(self):
+        """Clean up after each test."""
+        self.gcs.connection.reset_mock()
+        self.gcs.connection = None
+        self.gcs = None
+
     def test_initialization(self):
         """Test proper initialization of the ground station."""
         self.assertEqual(self.gcs.SYSTEM_ID, 255)
@@ -72,7 +78,7 @@ class TestGroundStation(unittest.TestCase):
             self.gcs.commands["CMD_START_SCAN"],
             0,
             duration,  # param1
-            type, # param2
+            type,  # param2
             0, 0, 0, 0, 0
         )
 

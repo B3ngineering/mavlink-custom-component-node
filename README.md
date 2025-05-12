@@ -3,19 +3,20 @@
 
 ## Problem Breakdown
 
-The objective of this solution is to develop a MAVLink node that emaulates a custom component (like a sensor) in a MAVLink system that receives and responds to commands. In this case, the assumption is made that the component is a generic telemetry sensor that scans its environment and sends relevant data back to the ground control station.
+The objective of this solution is to develop a MAVLink node that emulates a custom component (like a sensor) in a MAVLink system that receives and responds to commands. In this case, the assumption is made that the component is a generic telemetry sensor that scans its environment and sends relevant data back to the ground control station.
 
 ### Requirements
 
 - Unique component identity, in this case with MAV_TYPE_GENERIC and heartbeat messages with the components ID.
 - The node should subscribe to incoming COMMAND_LONG message types and be able to handle and acknowledge these commands.
+- Implement a CMD_START_SCAN command with duration and type within COMMAND_LONG
 - Broadcast status updates periodically with STATUSTEXT.
 
 ## Instructions
 
 ### Setup
 - Clone this repository to your machine using ``` git clone ```.
-- Create a virtual environment with Python in the root directory of the repository using.
+- Create a virtual environment with Python in the root directory of the repository using ``` python -m venv <venv> ``` and ``` source <venv>/bin/activate ```.
 - Run ``` pip install -r requirements.txt ``` to download the required dependencies.
 
 ### Usage
@@ -45,11 +46,11 @@ The objective of this solution is to develop a MAVLink node that emaulates a cus
 - The MAVLink node subscribes to incoming COMMAND_LONG messages and handles the CMD_START_SCAN command (and sends acknowledgements for each received command).
 - Periodically broadcasts status updates when state is changed.
 - Uses a CLI tool to simulate a GCS and send COMMAND_LONG messages to the node.
-- See sample logs in the logs folder (``` ground_station.log ''' and ''' mavlink_node.log ''').
+- See sample logs in the logs folder (``` ground_station.log ``` and ``` mavlink_node.log ```).
 
 ## Features
 - Clean shutdown of udp connections when program exits.
-- Test tooling for specific features using unittest.
+- Test tooling for specific features using unittest as well as integration testing for communication between scripts using mocking.
 
 ## Potential Next Steps
 - Simulate scan results and send data back using status or telemetry.

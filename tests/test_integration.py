@@ -32,6 +32,13 @@ class TestMAVLinkNodeIntegration(unittest.TestCase):
         self.gcs.target_system = self.node.SYSTEM_ID
         self.gcs.target_component = self.node.COMPONENT_ID
 
+    def tearDown(self):
+        """Clean up after each test."""
+        self.node.master.reset_mock()
+        self.gcs.connection = None
+        self.node = None
+        self.gcs = None
+
     def test_integration_start_scan(self):
         """Test integration: GroundStation sends CMD_START_SCAN to MAVLinkNode."""
         mock_command = Mock()

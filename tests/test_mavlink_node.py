@@ -30,6 +30,11 @@ class TestMAVLinkNode(unittest.TestCase):
         self.node = MAVLinkNode()
         self.node.master = Mock()
 
+    def tearDown(self):
+        """Clean up after each test."""
+        self.node.master.reset_mock()
+        self.node = None
+
     def test_initialization(self):
         """Test proper initialization of the MAVLink node."""
         self.assertEqual(self.node.SYSTEM_ID, 1)
