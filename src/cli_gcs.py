@@ -61,13 +61,13 @@ class GroundStation:
             msg = self.connection.wait_heartbeat(timeout=10)
             if msg:
                 logger.info(f"Heartbeat received from system {self.connection.target_system}" +
-                            " component {self.connection.target_component}")
+                            f" component {self.connection.target_component}")
                 return True
         except Exception as e:
             logger.error(f"Unexpected error: {e}")
             return False
 
-    def send_scan_command(self, time=5.0):
+    def send_scan_command(self, time=5.0, type=1):
         """Send CMD_START_SCAN command"""
         try:
             logger.info("Sending CMD_START_SCAN command...")
@@ -77,7 +77,8 @@ class GroundStation:
                 self.commands["CMD_START_SCAN"],
                 0,  # confirmation
                 time,  # param1 (duration of scan in seconds)
-                0, 0, 0, 0, 0, 0  # parameters (not used)
+                type,  # param2 (type of scan to perform)
+                0, 0, 0, 0, 0  # parameters (not used)
             )
             return True
         except Exception as e:
@@ -110,6 +111,8 @@ class GroundStation:
         logger.info("Heartbeat received, you can start sending commands.")
         try:
             while True:
+
+                # Display command options
                 command = input("\nCommands:"
                                 "\n0: Check hearbeat "
                                 "\n#: Send CMD_START_SCAN with that duration"
@@ -117,8 +120,14 @@ class GroundStation:
                 if command.isdigit():
                     if command == '0':
                         self.wait_heartbeat()
-                    elif self.send_scan_command(float(command)):
-                        self.monitor_messages()
+                    else:
+                        # User must provide scan type after duration
+                        scan_type = input("Enter scan type (1: Radar, 2: LiDAR, 3: Sonar): ")
+                        if scan_type in ['1', '2', '3']:
+                            if self.send_scan_command(float(command), int(scan_type)):
+                                self.monitor_messages()
+                        else:
+                            logger.warning("Invalid scan type. Please enter 1, 2, or 3.")
                 elif command.lower() == 'q':
                     logger.info("Exiting Ground Station...")
                     break

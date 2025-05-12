@@ -1,37 +1,129 @@
-2025-05-12 15:12:23,173 [INFO] Initializing MAVLink Node...
-2025-05-12 15:12:23,181 [INFO] MAVLink Node initialized (System ID: 1,Component ID: 25)
-2025-05-12 15:12:23,181 [INFO] MAVLink node running...
-2025-05-12 15:12:23,183 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:24,203 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:25,226 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:26,236 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:27,252 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:28,275 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:29,299 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:30,323 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:31,345 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:31,346 [INFO] Received command ID: 1
-2025-05-12 15:12:31,346 [INFO] Sent command acknowledgment with result: 0
-2025-05-12 15:12:31,347 [INFO] Status sent: State changed to: SCANNING
-2025-05-12 15:12:31,347 [INFO] Scanning... 1/7.0
-2025-05-12 15:12:32,378 [INFO] Scanning... 2/7.0
-2025-05-12 15:12:33,411 [INFO] Scanning... 3/7.0
-2025-05-12 15:12:34,443 [INFO] Scanning... 4/7.0
-2025-05-12 15:12:35,476 [INFO] Scanning... 5/7.0
-2025-05-12 15:12:36,495 [INFO] Scanning... 6/7.0
-2025-05-12 15:12:37,521 [INFO] Scanning... 7/7.0
-2025-05-12 15:12:38,554 [INFO] Status sent: State changed to: IDLE
-2025-05-12 15:12:39,587 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:40,591 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:41,619 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:42,647 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:43,675 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:44,701 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:45,725 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:46,742 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:47,770 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:48,774 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:49,783 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:50,810 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
-2025-05-12 15:12:51,781 [INFO] Shutting down...
-2025-05-12 15:12:51,782 [INFO] Shut down complete.
+2025-05-12 16:19:20,580 [INFO] Initializing MAVLink Node...
+2025-05-12 16:19:20,587 [INFO] MAVLink Node initialized (System ID: 1,Component ID: 25)
+2025-05-12 16:19:20,587 [INFO] MAVLink node running...
+2025-05-12 16:19:20,589 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:21,591 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:22,593 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:23,598 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:24,602 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:25,607 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:26,610 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:27,613 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:27,613 [INFO] Received command ID: 1
+2025-05-12 16:19:27,613 [INFO] Sent command acknowledgment with result: 0
+2025-05-12 16:19:27,613 [INFO] Status sent: State changed to: SCANNING
+2025-05-12 16:19:27,613 [INFO] Scanning... 1/3.0
+2025-05-12 16:19:27,614 [INFO] Status sent: Performing scan type: LiDAR, State remains: SCANNING
+2025-05-12 16:19:28,617 [INFO] Scanning... 2/3.0
+2025-05-12 16:19:28,617 [INFO] Status sent: Performing scan type: LiDAR, State remains: SCANNING
+2025-05-12 16:19:29,620 [INFO] Scanning... 3/3.0
+2025-05-12 16:19:29,620 [INFO] Status sent: Performing scan type: LiDAR, State remains: SCANNING
+2025-05-12 16:19:30,623 [INFO] Status sent: State changed to: IDLE
+2025-05-12 16:19:31,626 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:32,629 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:33,631 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:33,773 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:34,781 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:35,790 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:36,797 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:37,804 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:38,811 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:39,817 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:40,819 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:41,824 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:41,825 [INFO] Received command ID: 1
+2025-05-12 16:19:41,825 [INFO] Sent command acknowledgment with result: 0
+2025-05-12 16:19:41,825 [INFO] Status sent: State changed to: SCANNING
+2025-05-12 16:19:41,826 [INFO] Scanning... 1/2.0
+2025-05-12 16:19:41,826 [INFO] Status sent: Performing scan type: Radar, State remains: SCANNING
+2025-05-12 16:19:42,829 [INFO] Scanning... 2/2.0
+2025-05-12 16:19:42,830 [INFO] Status sent: Performing scan type: Radar, State remains: SCANNING
+2025-05-12 16:19:43,832 [INFO] Status sent: State changed to: IDLE
+2025-05-12 16:19:44,844 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:45,873 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:46,889 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:47,900 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:48,902 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:49,915 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:50,920 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:51,933 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:52,946 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:53,958 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:54,963 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:55,975 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:56,986 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:57,993 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:19:59,003 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:00,013 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:01,021 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:02,030 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:03,038 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:03,237 [INFO] Shutting down...
+2025-05-12 16:20:03,237 [INFO] Shut down complete.
+2025-05-12 16:20:14,607 [INFO] Initializing MAVLink Node...
+2025-05-12 16:20:14,617 [INFO] MAVLink Node initialized (System ID: 1,Component ID: 25)
+2025-05-12 16:20:14,617 [INFO] MAVLink node running...
+2025-05-12 16:20:14,620 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:15,622 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:16,626 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:17,629 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:18,633 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:19,637 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:20,642 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:21,646 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:21,647 [INFO] Received command ID: 1
+2025-05-12 16:20:21,647 [INFO] Sent command acknowledgment with result: 0
+2025-05-12 16:20:21,648 [INFO] Status sent: State changed to: SCANNING
+2025-05-12 16:20:21,648 [INFO] Scanning... 1/4.0
+2025-05-12 16:20:21,648 [INFO] Status sent: Performing scan type: LiDAR, State remains: SCANNING
+2025-05-12 16:20:22,652 [INFO] Scanning... 2/4.0
+2025-05-12 16:20:22,653 [INFO] Status sent: Performing scan type: LiDAR, State remains: SCANNING
+2025-05-12 16:20:23,655 [INFO] Scanning... 3/4.0
+2025-05-12 16:20:23,655 [INFO] Status sent: Performing scan type: LiDAR, State remains: SCANNING
+2025-05-12 16:20:24,666 [INFO] Scanning... 4/4.0
+2025-05-12 16:20:24,667 [INFO] Status sent: Performing scan type: LiDAR, State remains: SCANNING
+2025-05-12 16:20:25,669 [INFO] Status sent: State changed to: IDLE
+2025-05-12 16:20:26,676 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:27,678 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:28,685 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:29,687 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:30,693 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:31,698 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:32,701 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:33,704 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:34,711 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:35,715 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:36,718 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:36,818 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:37,820 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:38,822 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:39,823 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:40,828 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:40,830 [INFO] Received command ID: 1
+2025-05-12 16:20:40,830 [INFO] Sent command acknowledgment with result: 0
+2025-05-12 16:20:40,830 [INFO] Status sent: State changed to: SCANNING
+2025-05-12 16:20:40,831 [INFO] Scanning... 1/3.0
+2025-05-12 16:20:40,831 [INFO] Status sent: Performing scan type: Sonar, State remains: SCANNING
+2025-05-12 16:20:41,834 [INFO] Scanning... 2/3.0
+2025-05-12 16:20:41,835 [INFO] Status sent: Performing scan type: Sonar, State remains: SCANNING
+2025-05-12 16:20:42,838 [INFO] Scanning... 3/3.0
+2025-05-12 16:20:42,839 [INFO] Status sent: Performing scan type: Sonar, State remains: SCANNING
+2025-05-12 16:20:43,842 [INFO] Status sent: State changed to: IDLE
+2025-05-12 16:20:44,845 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:45,848 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:46,851 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:47,855 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:48,859 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:49,862 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:50,865 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:51,872 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:52,873 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:53,876 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:54,879 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:55,880 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:56,883 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:57,884 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:58,887 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:20:59,889 [INFO] Heartbeat sent (System ID: 1, Component ID: 25)
+2025-05-12 16:21:00,665 [INFO] Shutting down...
+2025-05-12 16:21:00,666 [INFO] Shut down complete.

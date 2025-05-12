@@ -1,37 +1,95 @@
-2025-05-12 15:12:25,832 - INFO - Initializing Ground Station...
-2025-05-12 15:12:25,847 - INFO - Ground Station initialized (System ID: 255,Component ID: 26)
-2025-05-12 15:12:25,847 - INFO - Ground Station is running...
-2025-05-12 15:12:25,847 - INFO - Waiting for heartbeat...
-2025-05-12 15:12:26,236 - INFO - Heartbeat received from system 1 component {self.connection.target_component}
-2025-05-12 15:12:26,237 - INFO - Heartbeat received, you can start sending commands.
+2025-05-12 16:20:15,566 - INFO - Initializing Ground Station...
+2025-05-12 16:20:15,575 - INFO - Ground Station initialized (System ID: 255,Component ID: 26)
+2025-05-12 16:20:15,576 - INFO - Ground Station is running...
+2025-05-12 16:20:15,576 - INFO - Waiting for heartbeat...
+2025-05-12 16:20:15,623 - INFO - Heartbeat received from system 1 component 0
+2025-05-12 16:20:15,623 - INFO - Heartbeat received, you can start sending commands.
 
 Commands:
 0: Check hearbeat 
 #: Send CMD_START_SCAN with that duration
 q: Quit
-Enter command: 7
-2025-05-12 15:12:30,368 - INFO - Sending CMD_START_SCAN command...
-2025-05-12 15:12:30,368 - INFO - Heartbeat received from system 1 component 25
-2025-05-12 15:12:30,368 - INFO - Heartbeat received from system 1 component 25
-2025-05-12 15:12:30,368 - INFO - Heartbeat received from system 1 component 25
-2025-05-12 15:12:30,368 - INFO - Heartbeat received from system 1 component 25
-2025-05-12 15:12:31,345 - INFO - Heartbeat received from system 1 component 25
-2025-05-12 15:12:31,347 - INFO - Received acknowledgment for command 1
-2025-05-12 15:12:31,347 - INFO - Result: 0
-2025-05-12 15:12:31,347 - INFO - Status: State changed to: SCANNING
-2025-05-12 15:12:38,554 - INFO - Status: State changed to: IDLE
-2025-05-12 15:12:39,587 - INFO - Heartbeat received from system 1 component 25
+Enter command: 4
+Enter scan type (1: Radar, 2: LiDAR, 3: Sonar): 2
+2025-05-12 16:20:21,089 - INFO - Sending CMD_START_SCAN command...
+2025-05-12 16:20:21,090 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:21,090 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:21,090 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:21,090 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:21,091 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:21,647 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:21,648 - INFO - Received acknowledgment for command 1
+2025-05-12 16:20:21,648 - INFO - Result: 0
+2025-05-12 16:20:21,648 - INFO - Status: State changed to: SCANNING
+2025-05-12 16:20:21,649 - INFO - Status: Performing scan type: LiDAR, State remains: SCANNI
+2025-05-12 16:20:22,653 - INFO - Status: Performing scan type: LiDAR, State remains: SCANNI
+2025-05-12 16:20:23,656 - INFO - Status: Performing scan type: LiDAR, State remains: SCANNI
+2025-05-12 16:20:24,668 - INFO - Status: Performing scan type: LiDAR, State remains: SCANNI
+2025-05-12 16:20:25,669 - INFO - Status: State changed to: IDLE
+2025-05-12 16:20:26,677 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:27,678 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:28,686 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:29,688 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:30,694 - INFO - Heartbeat received from system 1 component 25
 
 Commands:
 0: Check hearbeat 
 #: Send CMD_START_SCAN with that duration
 q: Quit
-Enter command: k
-2025-05-12 15:12:45,644 - WARNING - Invalid command
+Enter command: 3
+Enter scan type (1: Radar, 2: LiDAR, 3: Sonar): 4
+2025-05-12 16:20:36,361 - WARNING - Invalid scan type. Please enter 1, 2, or 3.
+
+Commands:
+0: Check hearbeat 
+#: Send CMD_START_SCAN with that duration
+q: Quit
+Enter command: 3
+Enter scan type (1: Radar, 2: LiDAR, 3: Sonar): 3
+2025-05-12 16:20:39,972 - INFO - Sending CMD_START_SCAN command...
+2025-05-12 16:20:39,973 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,973 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,973 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,973 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,973 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,973 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,973 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,974 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,974 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:39,974 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:40,829 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:40,830 - INFO - Received acknowledgment for command 1
+2025-05-12 16:20:40,831 - INFO - Result: 0
+2025-05-12 16:20:40,831 - INFO - Status: State changed to: SCANNING
+2025-05-12 16:20:40,831 - INFO - Status: Performing scan type: Sonar, State remains: SCANNI
+2025-05-12 16:20:41,835 - INFO - Status: Performing scan type: Sonar, State remains: SCANNI
+2025-05-12 16:20:42,839 - INFO - Status: Performing scan type: Sonar, State remains: SCANNI
+2025-05-12 16:20:43,842 - INFO - Status: State changed to: IDLE
+2025-05-12 16:20:44,845 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:45,848 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:46,852 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:47,855 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:48,859 - INFO - Heartbeat received from system 1 component 25
+2025-05-12 16:20:49,862 - INFO - Heartbeat received from system 1 component 25
+
+Commands:
+0: Check hearbeat 
+#: Send CMD_START_SCAN with that duration
+q: Quit
+Enter command: h
+2025-05-12 16:20:53,235 - WARNING - Invalid command
+
+Commands:
+0: Check hearbeat 
+#: Send CMD_START_SCAN with that duration
+q: Quit
+Enter command: 0
+2025-05-12 16:20:56,202 - INFO - Waiting for heartbeat...
+2025-05-12 16:20:56,203 - INFO - Heartbeat received from system 1 component 0
 
 Commands:
 0: Check hearbeat 
 #: Send CMD_START_SCAN with that duration
 q: Quit
 Enter command: q
-2025-05-12 15:12:49,452 - INFO - Exiting Ground Station...
+2025-05-12 16:20:59,016 - INFO - Exiting Ground Station...

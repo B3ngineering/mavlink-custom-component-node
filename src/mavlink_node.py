@@ -40,6 +40,13 @@ class MAVLinkNode:
             "CMD_START_SCAN": 1  # Command ID for CMD_START_SCAN
         }
 
+        # Define dictionary for types of scans
+        self.scan_types = {
+            1: "Radar",
+            2: "LiDAR",
+            3: "Sonar"
+        }
+
         self.state = "IDLE"
         logger.info(f"MAVLink Node initialized (System ID: {self.SYSTEM_ID}," +
                     f"Component ID: {self.COMPONENT_ID})")
@@ -104,15 +111,20 @@ class MAVLinkNode:
             logger.info(f"Sent command acknowledgment with result: {result}")
 
             # Handle specific command actions once acknowledgement is sent
-            if msg.command == 1:  # START_SCAN command
+            if msg.command == self.commands["CMD_START_SCAN"]:
                 if self.state == "IDLE":
                     self.state = "SCANNING"
                     self.send_statustext(f"State changed to: {self.state}")
                     for i in range(int(msg.param1)):
                         logger.info(f"Scanning... {i+1}/{msg.param1}")
+                        self.send_statustext(f"Performing scan type: {self.scan_types[msg.param2]}, State remains: {self.state}")
+                        # In a real scenario, this would send telemetry data from the scan to the GCS
                         time.sleep(1)
                     self.state = "IDLE"
                     self.send_statustext(f"State changed to: {self.state}")
+                elif self.state == "SCANNING":
+                    self.send_statustext("Already scanning, please wait.")
+                    logger.info("Already scanning, please wait.")
 
         except Exception as e:
             logger.error(f"Error handling command: {e}")
