@@ -1,0 +1,7 @@
+pymavlink>=2.4.0
+future>=0.18.0
+lxml>=4.9.0
+pytest>=6.0.0
+pytest-cov>=2.10.0
+PyYAML>=5.4.0
+lark-parser>=0.7.8
