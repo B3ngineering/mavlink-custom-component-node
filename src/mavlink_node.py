@@ -16,12 +16,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 class MAVLinkNode:
     def __init__(self):
         logger.info("Initializing MAVLink Node...")
 
         self.SYSTEM_ID = 1
-        self.COMPONENT_ID = 25 # MAV_COMP_ID_USER1
+        self.COMPONENT_ID = 25  # MAV_COMP_ID_USER1
 
         # Create a simple Mavlink connection with udpout
         self.master = mavutil.mavlink_connection(
@@ -33,8 +34,14 @@ class MAVLinkNode:
             dialect='common'
         )
 
+        # Define supported commands and their IDs
+        self.commands = {
+            "CMD_START_SCAN": 1  # Command ID for CMD_START_SCAN
+        }
+
         self.state = "IDLE"
-        logger.info(f"MAVLink Node initialized (System ID: {self.SYSTEM_ID}, Component ID: {self.COMPONENT_ID})")
+        logger.info(f"MAVLink Node initialized (System ID: {self.SYSTEM_ID}," +
+                    f"Component ID: {self.COMPONENT_ID})")
 
         # Register signal handlers for proper shutdown
         signal.signal(signal.SIGINT, self.shutdown)
@@ -58,7 +65,8 @@ class MAVLinkNode:
                 mavutil.mavlink.MAV_STATE_ACTIVE,
                 2   # Mavlink version
             )
-            logger.info(f"Heartbeat sent (System ID: {self.SYSTEM_ID}, Component ID: {self.COMPONENT_ID})")
+            logger.info(f"Heartbeat sent (System ID: {self.SYSTEM_ID}," +
+                        f" Component ID: {self.COMPONENT_ID})")
         except Exception as e:
             logger.error(f"Error sending heartbeat: {e}")
 
@@ -79,7 +87,7 @@ class MAVLinkNode:
 
         try:
             # Set result based on supported commands
-            if msg.command == 1:  # START_SCAN command
+            if msg.command == self.commands["CMD_START_SCAN"]:
                 if self.state == "IDLE":
                     result = mavutil.mavlink.MAV_RESULT_ACCEPTED
                 else:
@@ -127,6 +135,7 @@ class MAVLinkNode:
             logger.info("Shutting down MAVLink node...")
         except Exception as e:
             logger.error(f"Unexpected error: {e}")
+
 
 if __name__ == "__main__":
     node = MAVLinkNode()

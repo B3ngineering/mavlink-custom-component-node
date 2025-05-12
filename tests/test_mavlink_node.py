@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, MagicMock
 import sys
 import os
 
@@ -21,6 +21,7 @@ sys.modules['mavutil'] = mock_mavutil
 sys.modules['pymavlink.mavutil'] = mock_mavutil
 
 from src.mavlink_node import MAVLinkNode
+
 
 class TestMAVLinkNode(unittest.TestCase):
     def setUp(self):
@@ -67,5 +68,6 @@ class TestMAVLinkNode(unittest.TestCase):
             mock_mavutil.mavlink.MAV_RESULT_UNSUPPORTED
         )
 
+
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()

@@ -16,6 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 class GroundStation:
     def __init__(self):
         logger.info("Initializing Ground Station...")
@@ -37,8 +38,9 @@ class GroundStation:
         self.commands = {
             "CMD_START_SCAN": 1  # Command ID for CMD_START_SCAN
         }
-        
-        logger.info(f"Ground Station initialized (System ID: {self.SYSTEM_ID}, Component ID: {self.COMPONENT_ID})")
+
+        logger.info(f"Ground Station initialized (System ID: {self.SYSTEM_ID}," +
+                    f"Component ID: {self.COMPONENT_ID})")
 
         # Register signal handlers for proper shutdown
         signal.signal(signal.SIGINT, self.shutdown)
@@ -57,8 +59,8 @@ class GroundStation:
         try:
             msg = self.connection.wait_heartbeat(timeout=10)
             if msg:
-                logger.info(f"Heartbeat received from system {self.connection.target_system} "
-                            f"component {self.connection.target_component}")
+                logger.info(f"Heartbeat received from system {self.connection.target_system}" +
+                            " component {self.connection.target_component}")
                 return True
         except Exception as e:
             logger.error(f"Unexpected error: {e}")
@@ -80,7 +82,7 @@ class GroundStation:
         except Exception as e:
             logger.error(f"Error sending command: {e}")
             return False
-        
+
     def monitor_messages(self, timeout=10):
         """Monitor for incoming messages"""
         start_time = time.time()
@@ -103,11 +105,14 @@ class GroundStation:
     def run(self):
         """Main operation loop for sending commands and monitoring messages"""
         logger.info("Ground Station is running...")
-        self.wait_heartbeat() # Wait for first heartbeat before sending commands
+        self.wait_heartbeat()  # Wait for first heartbeat before sending commands
         logger.info("Heartbeat received, you can start sending commands.")
         try:
             while True:
-                command = input("\nCommands:\n#: Send CMD_START_SCAN with that duration\nq: Quit\nEnter command: ")
+                command = input("\nCommands:"
+                                "\n0: Check hearbeat "
+                                "\n#: Send CMD_START_SCAN with that duration"
+                                "\nq: Quit\nEnter command: ")
                 if command.isdigit():
                     if command == '0':
                         self.wait_heartbeat()
@@ -119,6 +124,7 @@ class GroundStation:
             logger.info("Shutting down Ground Station...")
         except Exception as e:
             logger.error(f"Unexpected error: {e}")
+
 
 if __name__ == "__main__":
     gcs = GroundStation()

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, MagicMock
 import sys
 import os
 
@@ -19,6 +19,7 @@ sys.modules['mavutil'] = mock_mavutil
 sys.modules['pymavlink.mavutil'] = mock_mavutil
 
 from src.cli_gcs import GroundStation
+
 
 class TestGroundStation(unittest.TestCase):
     def setUp(self):
@@ -41,17 +42,17 @@ class TestGroundStation(unittest.TestCase):
         mock_heartbeat.get_srcSystem.return_value = 1
         mock_heartbeat.get_srcComponent.return_value = 25
         mock_heartbeat.type = mock_mavutil.mavlink.MAV_TYPE_GENERIC
-        
+
         # Set up the mock to return our heartbeat and update target system/component
         def mock_wait_heartbeat(*args, **kwargs):
             self.gcs.connection.target_system = 1
             self.gcs.connection.target_component = 25
             return mock_heartbeat
-            
+
         self.gcs.connection.wait_heartbeat.side_effect = mock_wait_heartbeat
-        
+
         result = self.gcs.wait_heartbeat()
-        
+
         # Check that the heartbeat was received and the target system/component were set
         self.assertTrue(result)
         self.gcs.connection.wait_heartbeat.assert_called_once_with(timeout=10)
@@ -73,5 +74,6 @@ class TestGroundStation(unittest.TestCase):
             0, 0, 0, 0, 0, 0
         )
 
+
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()
