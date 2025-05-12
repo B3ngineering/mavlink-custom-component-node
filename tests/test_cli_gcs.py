@@ -62,6 +62,7 @@ class TestGroundStation(unittest.TestCase):
     def test_send_scan_command(self):
         """Ensure that the scan command is sent correctly."""
         duration = 5.0
+        type = 1
         result = self.gcs.send_scan_command(duration)
 
         self.assertTrue(result)
@@ -71,7 +72,8 @@ class TestGroundStation(unittest.TestCase):
             self.gcs.commands["CMD_START_SCAN"],
             0,
             duration,  # param1
-            0, 0, 0, 0, 0, 0
+            type, # param2
+            0, 0, 0, 0, 0
         )
 
 

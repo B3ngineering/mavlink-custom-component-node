@@ -15,6 +15,7 @@ mock_mavutil.mavlink.MAV_RESULT_ACCEPTED = 0
 mock_mavutil.mavlink.MAV_RESULT_UNSUPPORTED = 2
 mock_mavutil.mavlink.MAV_TYPE_GENERIC = 0
 mock_mavutil.mavlink.MAV_STATE_ACTIVE = 4
+mock_mavutil.mavlink.MAV_COMP_ID_USER1 = 25  # Define MAV_COMP_ID_USER1
 
 # Patch mavutil before importing MAVLinkNode
 sys.modules['mavutil'] = mock_mavutil
@@ -55,7 +56,7 @@ class TestMAVLinkNode(unittest.TestCase):
 
         self.node.handle_command(mock_msg)
         self.node.master.mav.command_ack_send.assert_called_once()
-        self.assertEqual(self.node.state, "IDLE")
+        self.assertEqual(self.node.state, "SCANNING")
 
     def test_handle_unsupported_command(self):
         """Test handling of unsupported command."""

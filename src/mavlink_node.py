@@ -25,6 +25,8 @@ class MAVLinkNode:
         self.SYSTEM_ID = 1
         self.COMPONENT_ID = 25  # MAV_COMP_ID_USER1
 
+        mavutil.mavlink.MAV_COMP_ID_USER1 = 25
+
         # Create a simple Mavlink connection with udpout
         self.master = mavutil.mavlink_connection(
             'udpout:localhost:14551',
