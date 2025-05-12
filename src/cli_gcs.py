@@ -11,6 +11,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
+        logging.FileHandler('logs/ground_station.log'),
         logging.StreamHandler()
     ]
 )
@@ -118,6 +119,9 @@ class GroundStation:
                         self.wait_heartbeat()
                     elif self.send_scan_command(float(command)):
                         self.monitor_messages()
+                elif command.lower() == 'q':
+                    logger.info("Exiting Ground Station...")
+                    break
                 else:
                     logger.warning("Invalid command")
         except KeyboardInterrupt:
