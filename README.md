@@ -22,7 +22,7 @@ The objective of this solution is to develop a MAVLink node that emulates a cust
 ### Usage
 
 **Development**:
-- From the root directory of this repository, start two terminal shells.
+- From the root directory of this repository, start two terminal shells and activate the virtual environment from setup in each.
 - In one, run ``` python src/mavlink_node.py ``` and in the other run ``` python src/cli_gcs.py ```.
 - Heartbeat message should be picked up by the gcs. 
 - Follow the command instructions on the terminal. Inputting a # will call a scan of that duration, and you will then be prompted to select a type of scan. After hitting Enter, the command will be sent.
@@ -45,7 +45,7 @@ The objective of this solution is to develop a MAVLink node that emulates a cust
 - State is tracked using MAV_STATE with MAV_STATE_ACTIVE (4) for scanning in progress and MAV_STATE_STANDBY (3) for inactive.
 
 ## Proof of Functionality
-- The system registers the MAVLink node as a generic component and transmits heartbeat messages at 1s intervals with its unique user id.
+- The system registers the MAVLink node (``` src/mavlink_node.py ```) as a generic component and transmits heartbeat messages at 1s intervals with its unique user id.
 - The MAVLink node subscribes to incoming COMMAND_LONG messages and handles the CMD_START_SCAN command (and sends acknowledgements for each received command).
 - Periodically broadcasts status updates when state is changed.
 - Uses a CLI tool to simulate a GCS and send COMMAND_LONG messages to the node.
