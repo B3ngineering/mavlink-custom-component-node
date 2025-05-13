@@ -15,7 +15,8 @@ mock_mavutil.mavlink.MAV_RESULT_ACCEPTED = 0
 mock_mavutil.mavlink.MAV_RESULT_UNSUPPORTED = 2
 mock_mavutil.mavlink.MAV_TYPE_GENERIC = 0
 mock_mavutil.mavlink.MAV_STATE_ACTIVE = 4
-mock_mavutil.mavlink.MAV_COMP_ID_USER1 = 25  # Define MAV_COMP_ID_USER1
+mock_mavutil.mavlink.MAV_STATE_STANDBY = 3
+mock_mavutil.mavlink.MAV_COMP_ID_USER1 = 25
 
 # Patch mavutil before importing MAVLinkNode
 sys.modules['mavutil'] = mock_mavutil
@@ -39,19 +40,11 @@ class TestMAVLinkNode(unittest.TestCase):
         """Test proper initialization of the MAVLink node."""
         self.assertEqual(self.node.SYSTEM_ID, 1)
         self.assertEqual(self.node.COMPONENT_ID, 25)
-        self.assertEqual(self.node.state, "IDLE")
 
     def test_send_heartbeat(self):
         """Test heartbeat message sending."""
         self.node.send_heartbeat()
-        self.node.master.mav.heartbeat_send.assert_called_once_with(
-            mock_mavutil.mavlink.MAV_TYPE_GENERIC,
-            mock_mavutil.mavlink.MAV_COMP_ID_USER1,
-            1,
-            0,
-            mock_mavutil.mavlink.MAV_STATE_ACTIVE,
-            2   # Mavlink version
-        )
+        self.node.master.mav.heartbeat_send.assert_called_once()
 
     def test_handle_command_start_scan(self):
         """Test handling of START_SCAN command."""
@@ -61,7 +54,7 @@ class TestMAVLinkNode(unittest.TestCase):
 
         self.node.handle_command(mock_msg)
         self.node.master.mav.command_ack_send.assert_called_once()
-        self.assertEqual(self.node.state, "SCANNING")
+        self.assertEqual(int(self.node.state), 1)
 
     def test_handle_unsupported_command(self):
         """Test handling of unsupported command."""

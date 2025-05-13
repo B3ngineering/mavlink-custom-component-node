@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import time
-import socket
 import logging
 import signal
 from pymavlink import mavutil
@@ -30,8 +29,6 @@ class GroundStation:
             'udpin:localhost:14551',
             source_system=self.SYSTEM_ID,
             source_component=self.COMPONENT_ID,
-            input=True,
-            bind=True,
             dialect='common'
         )
 
@@ -50,7 +47,7 @@ class GroundStation:
     def shutdown(self, signum, frame):
         """Handle shutdown signals by closing the connection"""
         logger.info("Shutting down...")
-        self.master.close()
+        self.connection.close()
         logger.info("Shut down complete.")
         exit(0)
 
@@ -60,14 +57,16 @@ class GroundStation:
         try:
             msg = self.connection.wait_heartbeat(timeout=10)
             if msg:
-                logger.info(f"Heartbeat received from system {self.connection.target_system}" +
-                            f" component {self.connection.target_component}")
+                logger.info(f"Heartbeat received (System ID: {msg.get_srcSystem()}, " +
+                            f"Component ID: {msg.get_srcComponent()}, " + 
+                            f"State: {msg.system_status})")
                 return True
+            return False
         except Exception as e:
             logger.error(f"Unexpected error: {e}")
             return False
 
-    def send_scan_command(self, time=5.0, type=1):
+    def send_scan_command(self, scan_duration=5, scan_type=1):
         """Send CMD_START_SCAN command"""
         try:
             logger.info("Sending CMD_START_SCAN command...")
@@ -76,8 +75,8 @@ class GroundStation:
                 self.connection.target_component,
                 self.commands["CMD_START_SCAN"],
                 0,  # confirmation
-                time,  # param1 (duration of scan in seconds)
-                type,  # param2 (type of scan to perform)
+                scan_duration,  # param1 (duration of scan in seconds)
+                scan_type,  # param2 (type of scan to perform)
                 0, 0, 0, 0, 0  # parameters (not used)
             )
             return True
@@ -90,49 +89,69 @@ class GroundStation:
         start_time = time.time()
         while time.time() - start_time < timeout:
             try:
-                msg = self.connection.recv_match(blocking=True, timeout=1)
-                if msg:
-                    if msg.get_type() == 'COMMAND_ACK':
-                        logger.info(f"Received acknowledgment for command {msg.command}")
-                        logger.info(f"Result: {msg.result}")
-                    elif msg.get_type() == 'STATUSTEXT':
-                        logger.info(f"Status: {msg.text}")
-                    elif msg.get_type() == 'HEARTBEAT':
-                        logger.info(f"Heartbeat received from system {msg.get_srcSystem()} "
-                                    f"component {msg.get_srcComponent()}")
+                msg = self.connection.recv_match(
+                    type=['COMMAND_ACK', 'STATUSTEXT', 'HEARTBEAT'],
+                    blocking=True,
+                    timeout=0)
+
+                if msg is None:
                     continue
-            except socket.error:
-                continue
+
+                if msg.get_type() == 'COMMAND_ACK':
+                    result_map = {
+                        mavutil.mavlink.MAV_RESULT_ACCEPTED: "ACCEPTED",
+                        mavutil.mavlink.MAV_RESULT_TEMPORARILY_REJECTED: "TEMPORARILY_REJECTED",
+                        mavutil.mavlink.MAV_RESULT_DENIED: "DENIED",
+                        mavutil.mavlink.MAV_RESULT_UNSUPPORTED: "UNSUPPORTED",
+                        mavutil.mavlink.MAV_RESULT_FAILED: "FAILED"
+                    }
+                    result = result_map.get(msg.result)
+                    logger.info(f"Command {msg.command} acknowledgement received: {result}")
+                    if result != "ACCEPTED":
+                        break
+                elif msg.get_type() == 'STATUSTEXT':
+                    logger.info(f"Status: {msg.text}")
+                elif msg.get_type() == 'HEARTBEAT':
+                    logger.info(f"Heartbeat received (System ID: {msg.get_srcSystem()}, " +
+                            f"Component ID: {msg.get_srcComponent()}, " + 
+                            f"State: {msg.system_status})")
+
+            except Exception as e:
+                logger.error(f"Error receiving message: {e}")
+                break
 
     def run(self):
         """Main operation loop for sending commands and monitoring messages"""
         logger.info("Ground Station is running...")
-        self.wait_heartbeat()  # Wait for first heartbeat before sending commands
+        if not self.wait_heartbeat():  # Wait for first heartbeat before sending commands
+            logger.error("No heartbeat received, exiting...")
+            return
+
         logger.info("Heartbeat received, you can start sending commands.")
         try:
             while True:
-
+                # Check if alive
                 # Display command options
                 command = input("\nCommands:"
-                                "\n0: Check hearbeat "
-                                "\n#: Send CMD_START_SCAN with that duration"
+                                "\nh: Check hearbeat "
+                                "\n#: Send CMD_START_SCAN lasting for # seconds"
                                 "\nq: Quit\nEnter command: ")
                 if command.isdigit():
-                    if command == '0':
-                        self.wait_heartbeat()
+                    # User must provide scan type after duration
+                    scan_type = input("Enter scan type (1: Radar, 2: LiDAR, 3: Sonar): ")
+                    if scan_type in ['1', '2', '3']:
+                        if self.send_scan_command(float(command), int(scan_type)):
+                            self.monitor_messages(float(command) + 1)  # Monitor for the duration of the scan with buffer
                     else:
-                        # User must provide scan type after duration
-                        scan_type = input("Enter scan type (1: Radar, 2: LiDAR, 3: Sonar): ")
-                        if scan_type in ['1', '2', '3']:
-                            if self.send_scan_command(float(command), int(scan_type)):
-                                self.monitor_messages()
-                        else:
-                            logger.warning("Invalid scan type. Please enter 1, 2, or 3.")
+                        logger.warning("Invalid scan type. Please enter 1, 2, or 3.")
+                elif command.lower() == 'h':
+                    self.wait_heartbeat()
                 elif command.lower() == 'q':
                     logger.info("Exiting Ground Station...")
-                    break
+                    self.shutdown(None, None)
                 else:
-                    logger.warning("Invalid command")
+                    logger.warning("Invalid command. Please try again.")
+
         except KeyboardInterrupt:
             logger.info("Shutting down Ground Station...")
         except Exception as e:

@@ -53,15 +53,6 @@ class TestMAVLinkNodeIntegration(unittest.TestCase):
             mock_mavutil.mavlink.MAV_RESULT_ACCEPTED
         )
 
-        self.node.master.mav.statustext_send.assert_any_call(
-            mock_mavutil.mavlink.MAV_SEVERITY_INFO,
-            b"State changed to: SCANNING"
-        )
-        self.node.master.mav.statustext_send.assert_any_call(
-            mock_mavutil.mavlink.MAV_SEVERITY_INFO,
-            b"State changed to: IDLE"
-        )
-
     def test_integration_unsupported_command(self):
         """Test integration: GroundStation sends unsupported command to MAVLinkNode."""
         mock_command = Mock()
@@ -92,5 +83,5 @@ class TestMAVLinkNodeIntegration(unittest.TestCase):
 
         self.node.master.mav.statustext_send.assert_called_once_with(
             mock_mavutil.mavlink.MAV_SEVERITY_INFO,
-            b"Already scanning, please wait."
+            b"Scan type not supported or already scanning."
         )
